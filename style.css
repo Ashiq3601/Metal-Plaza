@@ -112,13 +112,14 @@ img {
 .brand-emblem::before {
     content: "";
     position: absolute;
-    inset: -18%;
+    inset: 0;
     z-index: -1;
     border-radius: inherit;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.62), rgba(214, 189, 122, 0.16) 44%, transparent 70%);
-    filter: blur(22px);
+    filter: blur(18px);
     opacity: 0.82;
 }
+
 
 /* Subtle metal shimmer (always clipped to the circle) */
 .brand-emblem::after {
