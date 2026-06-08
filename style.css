@@ -19,7 +19,8 @@
     --glass-strong: rgba(255, 255, 255, 0.09);
     --glass-line: rgba(255, 255, 255, 0.12);
     --line-soft: rgba(216, 222, 225, 0.14);
-    --shadow: 0 28px 80px rgba(0, 0, 0, 0.42);
+    --shadow: 0 30px 90px rgba(0, 0, 0, 0.52);
+    --premium-shadow: 0 34px 100px rgba(0, 0, 0, 0.58);
     --copper-gradient: linear-gradient(135deg, #b44a2c 0%, #e06b3c 100%);
 }
 
@@ -48,6 +49,7 @@ body::before {
         linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
     background-size: 44px 44px;
+    -webkit-mask-image: linear-gradient(to bottom, #000, transparent 78%);
     mask-image: linear-gradient(to bottom, #000, transparent 78%);
 }
 
@@ -61,6 +63,7 @@ img {
 }
 
 .site-nav,
+.hero-glass-card,
 .about-text,
 .product-card,
 .contact-band,
@@ -68,7 +71,7 @@ footer,
 .trust-strip,
 .image-caption {
     background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.035)),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035) 46%, rgba(255, 255, 255, 0.07)),
         var(--glass);
     border: 1px solid var(--glass-line);
     -webkit-backdrop-filter: blur(18px);
@@ -80,23 +83,43 @@ footer,
     position: sticky;
     top: 0;
     z-index: 50;
-    min-height: 74px;
-    margin: 16px clamp(14px, 3vw, 32px) 0;
-    padding: 12px clamp(16px, 3.5vw, 34px);
+    width: 100%;
+    min-height: 86px;
+    margin: 0;
+    padding: 14px clamp(18px, 5vw, 64px);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    border-radius: 8px;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+    overflow: hidden;
     transition: background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.site-nav::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.14), transparent 24%, transparent 76%, rgba(255, 255, 255, 0.1)),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.16), transparent 48%);
+    opacity: 0.42;
+}
+
+.site-nav > * {
+    position: relative;
+    z-index: 1;
 }
 
 .site-nav.scrolled {
     background:
         linear-gradient(145deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.04)),
-        rgba(8, 10, 12, 0.78);
+        rgba(8, 10, 12, 0.82);
     border-color: rgba(255, 255, 255, 0.18);
-    box-shadow: 0 18px 54px rgba(0, 0, 0, 0.48);
+    box-shadow: 0 18px 58px rgba(0, 0, 0, 0.56);
 }
 
 .nav-brand {
@@ -154,8 +177,13 @@ footer,
     color: var(--white);
 }
 
+.nav-links a:first-child {
+    color: var(--copper-bright);
+}
+
 .nav-links a:hover::after,
-.nav-links a:focus-visible::after {
+.nav-links a:focus-visible::after,
+.nav-links a:first-child::after {
     transform: scaleX(1);
     transform-origin: left;
 }
@@ -195,12 +223,12 @@ footer,
 }
 
 .hero {
-    min-height: min(760px, 84vh);
-    margin-top: -90px;
-    padding: 168px 24px 58px;
+    min-height: min(860px, 92vh);
+    margin-top: -86px;
+    padding: 172px 24px 78px;
     background-image: url("hero-bg.jpg");
     background-size: cover;
-    background-position: center;
+    background-position: center right;
     position: relative;
     display: flex;
     align-items: center;
@@ -214,24 +242,68 @@ footer,
     inset: 0;
     z-index: -1;
     background:
-        linear-gradient(90deg, rgba(5, 6, 7, 0.9), rgba(7, 10, 12, 0.4) 52%, rgba(5, 6, 7, 0.86)),
-        linear-gradient(to bottom, rgba(5, 6, 7, 0.16), rgba(5, 6, 7, 0.88)),
+        linear-gradient(90deg, rgba(5, 6, 7, 0.9), rgba(7, 10, 12, 0.4) 46%, rgba(5, 6, 7, 0.78)),
+        linear-gradient(to bottom, rgba(5, 6, 7, 0.08), rgba(5, 6, 7, 0.88)),
         rgba(0, 0, 0, 0.2);
 }
 
 .hero-content {
-    width: min(920px, 100%);
+    width: min(1180px, calc(100% - 48px));
     position: relative;
     z-index: 2;
-    text-align: center;
+    text-align: left;
     display: grid;
-    justify-items: center;
+    justify-items: start;
+    gap: 46px;
+}
+
+.hero-glass-card {
+    position: relative;
+    width: min(520px, 100%);
+    padding: clamp(28px, 4.2vw, 48px);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--premium-shadow);
+}
+
+.hero-glass-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 18% 8%, rgba(255, 255, 255, 0.18), transparent 13rem),
+        linear-gradient(125deg, rgba(255, 255, 255, 0.18), transparent 34%),
+        linear-gradient(to bottom right, transparent 55%, rgba(255, 255, 255, 0.08));
+    opacity: 0.58;
+}
+
+.hero-glass-card::after,
+.product-card::after,
+.about-text::after,
+.contact-band::after,
+footer::after {
+    content: "";
+    position: absolute;
+    top: -45%;
+    right: -18%;
+    width: 52%;
+    height: 160%;
+    pointer-events: none;
+    background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.12), transparent);
+    transform: rotate(14deg);
+    opacity: 0.38;
+}
+
+.hero-glass-card > * {
+    position: relative;
+    z-index: 1;
 }
 
 .logo-plaque {
-    width: clamp(122px, 14vw, 166px);
+    width: clamp(102px, 10vw, 132px);
     aspect-ratio: 1;
-    margin-bottom: clamp(24px, 4vw, 36px);
+    margin-bottom: clamp(24px, 4vw, 34px);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -253,9 +325,9 @@ footer,
 }
 
 .hero h1 {
-    max-width: 920px;
-    font-size: clamp(3rem, 7.2vw, 6rem);
-    letter-spacing: clamp(4px, 1vw, 11px);
+    max-width: 440px;
+    font-size: clamp(2.7rem, 5vw, 4.7rem);
+    letter-spacing: 1px;
     font-weight: 900;
     line-height: 0.96;
     color: var(--white);
@@ -264,9 +336,9 @@ footer,
 
 .hero h1::after {
     content: "";
-    width: 74px;
+    width: 70px;
     height: 2px;
-    margin: 24px auto 0;
+    margin: 22px 0 0;
     display: block;
     background: var(--copper-gradient);
 }
@@ -311,9 +383,9 @@ footer,
 }
 
 .trust-strip {
-    width: min(760px, 100%);
-    margin-top: 42px;
-    padding: 14px 18px;
+    width: 100%;
+    margin-top: 0;
+    padding: 18px 22px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
@@ -323,6 +395,7 @@ footer,
     letter-spacing: 1px;
     text-transform: uppercase;
     border-radius: 8px;
+    box-shadow: 0 24px 72px rgba(0, 0, 0, 0.46);
 }
 
 .trust-strip span {
@@ -343,18 +416,19 @@ footer,
 .about {
     width: min(1180px, calc(100% - 48px));
     margin: auto;
-    padding: 96px 0;
+    padding: 108px 0;
     display: grid;
-    grid-template-columns: minmax(0, 0.92fr) minmax(360px, 1fr);
-    gap: clamp(34px, 6vw, 74px);
+    grid-template-columns: minmax(0, 0.78fr) minmax(440px, 1.22fr);
+    gap: 0;
     align-items: stretch;
 }
 
 .about-text {
     position: relative;
-    padding: clamp(28px, 4vw, 46px);
-    border-radius: 8px;
+    padding: clamp(34px, 4.8vw, 58px);
+    border-radius: 8px 0 0 8px;
     overflow: hidden;
+    min-height: 430px;
 }
 
 .about-text::before,
@@ -439,7 +513,7 @@ footer > * {
 .about-image {
     position: relative;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 0 8px 8px 0;
     border: 1px solid var(--glass-line);
     box-shadow: var(--shadow);
     background: var(--gunmetal);
@@ -457,7 +531,7 @@ footer > * {
 .about-image img {
     width: 100%;
     height: 100%;
-    min-height: 420px;
+    min-height: 430px;
     object-fit: cover;
     display: block;
     filter: contrast(1.05) saturate(0.86) brightness(0.92);
@@ -477,7 +551,7 @@ footer > * {
 }
 
 .products {
-    padding: 94px 24px 108px;
+    padding: 108px 24px 118px;
     text-align: center;
     background:
         linear-gradient(180deg, rgba(20, 26, 31, 0.42), rgba(5, 6, 7, 0.96)),
@@ -488,7 +562,7 @@ footer > * {
 
 .product-grid {
     width: min(1120px, 100%);
-    margin: 54px auto 0;
+    margin: 62px auto 0;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 24px;
@@ -500,6 +574,9 @@ footer > * {
     border-radius: 8px;
     overflow: hidden;
     text-align: left;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.16),
+        0 28px 82px rgba(0, 0, 0, 0.48);
     transition: transform 0.24s ease, border-color 0.24s ease, box-shadow 0.24s ease;
 }
 
@@ -511,7 +588,7 @@ footer > * {
 
 .product-card img {
     width: 100%;
-    height: 245px;
+    height: 252px;
     object-fit: cover;
     display: block;
     filter: contrast(1.06) saturate(0.82) brightness(0.92);
@@ -519,7 +596,7 @@ footer > * {
 
 .product-card-body {
     min-height: 184px;
-    padding: 24px;
+    padding: 26px;
     display: grid;
     align-content: start;
     gap: 10px;
@@ -545,7 +622,7 @@ footer > * {
 .gallery {
     width: min(1180px, calc(100% - 48px));
     margin: auto;
-    padding: 96px 0;
+    padding: 108px 0;
 }
 
 .section-heading {
@@ -582,7 +659,7 @@ footer > * {
 .contact-band {
     position: relative;
     width: min(1180px, calc(100% - 48px));
-    margin: 0 auto 96px;
+    margin: 0 auto 108px;
     padding: clamp(30px, 5vw, 54px);
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -590,6 +667,7 @@ footer > * {
     align-items: center;
     overflow: hidden;
     border-radius: 8px;
+    box-shadow: var(--premium-shadow);
 }
 
 .contact-band h2 {
@@ -607,13 +685,14 @@ footer > * {
 footer {
     position: relative;
     width: min(1180px, calc(100% - 48px));
-    margin: 0 auto 24px;
+    margin: 0 auto 28px;
     padding: 36px clamp(24px, 4vw, 42px);
     display: grid;
     grid-template-columns: 1.25fr 1fr 1fr;
     gap: 28px;
     overflow: hidden;
     border-radius: 8px;
+    box-shadow: var(--premium-shadow);
 }
 
 footer > div {
@@ -683,6 +762,7 @@ footer a:focus-visible {
     .site-nav {
         align-items: flex-start;
         flex-wrap: wrap;
+        padding-inline: 24px;
     }
 
     .nav-links {
@@ -695,17 +775,34 @@ footer a:focus-visible {
 
     .hero {
         min-height: min(700px, 82vh);
-        margin-top: -120px;
-        padding-top: 190px;
+        margin-top: -130px;
+        padding-top: 210px;
+    }
+
+    .hero-content {
+        width: min(100% - 40px, 1180px);
+    }
+
+    .hero-glass-card {
+        width: min(560px, 100%);
     }
 
     .about {
         grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .about-text {
+        border-radius: 8px 8px 0 0;
     }
 
     .about-image img {
         height: clamp(360px, 48vw, 480px);
         min-height: 0;
+    }
+
+    .about-image {
+        border-radius: 0 0 8px 8px;
     }
 
     .product-grid {
@@ -743,8 +840,8 @@ footer a:focus-visible {
 @media (max-width: 640px) {
     .site-nav {
         min-height: 68px;
-        margin: 10px 10px 0;
-        padding: 12px 14px;
+        margin: 0;
+        padding: 12px 18px;
         gap: 12px;
     }
 
@@ -772,12 +869,13 @@ footer a:focus-visible {
 
     .hero {
         min-height: min(650px, 80vh);
-        margin-top: -128px;
-        padding: 184px 18px 42px;
+        margin-top: -132px;
+        padding: 194px 18px 48px;
     }
 
     .hero h1 {
         max-width: 420px;
+        font-size: clamp(2.45rem, 11vw, 3.4rem);
     }
 
     .hero-actions,
@@ -816,6 +914,7 @@ footer a:focus-visible {
 
     .about-text {
         padding: 28px 22px;
+        min-height: auto;
     }
 
     .about-image img {
@@ -867,12 +966,12 @@ footer a:focus-visible {
 
     .hero {
         min-height: calc(100vh - 136px);
-        padding-top: 172px;
+        padding-top: 182px;
         padding-bottom: 34px;
     }
 
     .hero h1 {
-        font-size: 2.6rem;
+        font-size: 2.5rem;
         letter-spacing: 3px;
     }
 
