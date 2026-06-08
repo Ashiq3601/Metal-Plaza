@@ -19,7 +19,7 @@
     --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.38);
     --shadow-deep: 0 38px 120px rgba(0, 0, 0, 0.54);
     --glass:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.055)),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.075)),
         rgba(255, 255, 255, 0.035);
 }
 
@@ -90,11 +90,11 @@ img {
     clip-path: circle(54% at 50% 50%);
 
     background:
-        radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.58) 34%, rgba(255, 255, 255, 0.08) 68%, transparent 74%),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.04));
+        radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5) 34%, rgba(255, 255, 255, 0.07) 68%, transparent 76%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.055));
     border: 1px solid var(--gold-line);
-    -webkit-backdrop-filter: blur(28px) saturate(170%) contrast(108%);
-    backdrop-filter: blur(28px) saturate(170%) contrast(108%);
+    -webkit-backdrop-filter: blur(34px) saturate(190%) contrast(112%);
+    backdrop-filter: blur(34px) saturate(190%) contrast(112%);
     box-shadow:
         0 0 0 1px rgba(255, 255, 255, 0.08),
         0 0 70px rgba(242, 242, 240, 0.18),
@@ -142,8 +142,8 @@ img {
 .brand-emblem img {
     position: relative;
     z-index: 1;
-    width: 82%;
-    height: 82%;
+    width: 75%;
+    height: 75%;
     max-width: none;
     aspect-ratio: 1 / 1;
     object-fit: contain;
@@ -157,25 +157,25 @@ img {
 
 .site-nav {
     position: fixed;
-    top: 22px;
-    left: clamp(16px, 3vw, 42px);
-    right: clamp(16px, 3vw, 42px);
+    top: 16px;
+    left: clamp(14px, 3vw, 40px);
+    right: clamp(14px, 3vw, 40px);
     z-index: 90;
-    min-height: 76px;
-    padding: 10px clamp(14px, 2vw, 28px);
+    min-height: 64px;
+    padding: 8px clamp(12px, 1.7vw, 22px);
     display: grid;
     grid-template-columns: minmax(200px, auto) 1fr auto;
     align-items: center;
     gap: clamp(18px, 3vw, 44px);
-    border: 1px solid rgba(242, 242, 240, 0.18);
+    border: 1px solid rgba(242, 242, 240, 0.24);
     border-radius: 999px;
     background: var(--glass);
-    -webkit-backdrop-filter: blur(26px) saturate(180%);
-    backdrop-filter: blur(26px) saturate(180%);
+    -webkit-backdrop-filter: blur(34px) saturate(195%) contrast(112%);
+    backdrop-filter: blur(34px) saturate(195%) contrast(112%);
     box-shadow:
-        0 18px 64px rgba(0, 0, 0, 0.28),
-        0 0 0 1px rgba(255, 255, 255, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        0 16px 54px rgba(0, 0, 0, 0.26),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.32),
         inset 0 -1px 0 rgba(0, 0, 0, 0.18);
 
     transition: transform 0.32s ease, background 0.32s ease, border-color 0.32s ease;
@@ -208,26 +208,26 @@ img {
 .nav-brand {
     display: inline-flex;
     align-items: center;
-    gap: 13px;
+    gap: 10px;
     color: var(--silver);
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 900;
     letter-spacing: 1.6px;
     text-transform: uppercase;
 }
 
 .nav-emblem {
-    width: 56px;
-    height: 56px;
+    width: 46px;
+    height: 46px;
 }
 
 .nav-links {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: clamp(20px, 3vw, 44px);
-    color: rgba(242, 242, 240, 0.78);
-    font-size: 12px;
+    gap: clamp(16px, 2.5vw, 34px);
+    color: rgba(242, 242, 240, 0.82);
+    font-size: 11px;
     font-weight: 800;
     letter-spacing: 1.2px;
     text-transform: uppercase;
@@ -235,7 +235,7 @@ img {
 
 .nav-links a {
     position: relative;
-    padding: 10px 0;
+    padding: 8px 0;
     transition: color 0.24s ease, text-shadow 0.24s ease;
 }
 
@@ -267,21 +267,21 @@ img {
 
 .glass-button {
     position: relative;
-    min-height: 48px;
+    min-height: 44px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 0 22px;
+    padding: 0 20px;
     overflow: hidden;
     color: var(--silver);
     border: 1px solid rgba(214, 189, 122, 0.55);
     border-radius: 999px;
     background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06)),
-        rgba(5, 5, 5, 0.22);
-    -webkit-backdrop-filter: blur(28px) saturate(190%);
-    backdrop-filter: blur(28px) saturate(190%);
+        linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.07)),
+        rgba(5, 5, 5, 0.14);
+    -webkit-backdrop-filter: blur(32px) saturate(200%) contrast(112%);
+    backdrop-filter: blur(32px) saturate(200%) contrast(112%);
     box-shadow:
         0 16px 42px rgba(0, 0, 0, 0.28),
         0 0 0 1px rgba(255, 255, 255, 0.06),
@@ -405,18 +405,19 @@ img {
     width: clamp(160px, 18vw, 250px);
     height: clamp(160px, 18vw, 250px);
     transform: translate3d(0, var(--emblem-shift, 0px), 0);
-    animation: heroEmblemPulse 5.2s ease-in-out infinite;
-    will-change: transform;
+    animation: heroEmblemGlow 12s ease-in-out infinite;
+    will-change: filter;
 }
 
 
-@keyframes heroEmblemPulse {
+@keyframes heroEmblemGlow {
     0%,
     100% {
-        transform: translate3d(0, var(--emblem-shift, 0px), 0) scale(1);
+        filter: drop-shadow(0 0 0 rgba(214, 189, 122, 0));
     }
+
     50% {
-        transform: translate3d(0, var(--emblem-shift, 0px), 0) scale(1.02);
+        filter: drop-shadow(0 0 26px rgba(214, 189, 122, 0.18));
     }
 }
 
@@ -736,14 +737,16 @@ footer p {
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 32px;
     align-items: center;
-    border: 1px solid rgba(242, 242, 240, 0.2);
+    border: 1px solid rgba(242, 242, 240, 0.28);
     border-radius: 26px;
     background: var(--glass);
-    -webkit-backdrop-filter: blur(30px) saturate(170%) contrast(108%);
-    backdrop-filter: blur(30px) saturate(170%) contrast(108%);
+    -webkit-backdrop-filter: blur(34px) saturate(195%) contrast(112%);
+    backdrop-filter: blur(34px) saturate(195%) contrast(112%);
     box-shadow:
-        var(--shadow-soft),
-        inset 0 1px 0 rgba(255, 255, 255, 0.24);
+        0 22px 74px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.34),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18);
 }
 
 .contact-panel h2 {
@@ -862,12 +865,6 @@ footer a:focus-visible {
     }
 }
 
-/* Hide legacy sweep keyframes if any remain */
-/* (intentionally left blank) */
-
-
-
-
 @media (max-width: 1080px) {
     .site-nav {
         grid-template-columns: auto 1fr;
@@ -924,10 +921,11 @@ footer a:focus-visible {
 
 @media (max-width: 720px) {
     .site-nav {
-        top: 14px;
+        top: 12px;
         left: 14px;
         right: 14px;
-        padding: 10px 12px;
+        min-height: 58px;
+        padding: 8px 10px;
         gap: 12px;
     }
 
@@ -938,12 +936,12 @@ footer a:focus-visible {
     }
 
     .nav-emblem {
-        width: 50px;
-        height: 50px;
+        width: 42px;
+        height: 42px;
     }
 
     .nav-call {
-        min-height: 42px;
+        min-height: 38px;
         padding: 0 14px;
         font-size: 11px;
     }
