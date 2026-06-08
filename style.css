@@ -55,37 +55,6 @@ body::before {
     mask-image: linear-gradient(to bottom, #000, transparent 78%);
 }
 
-.rain-layer {
-    position: fixed;
-    inset: -12% 0 0;
-    z-index: 4;
-    pointer-events: none;
-    opacity: 0.32;
-    background-image:
-        linear-gradient(102deg, transparent 0 47%, rgba(236, 244, 247, 0.42) 48% 49%, transparent 50%),
-        linear-gradient(102deg, transparent 0 48%, rgba(236, 244, 247, 0.24) 49% 50%, transparent 51%);
-    background-size: 68px 160px, 112px 220px;
-    animation: rainFall 1.25s linear infinite;
-    mix-blend-mode: screen;
-}
-
-.rain-layer-soft {
-    opacity: 0.16;
-    filter: blur(0.4px);
-    background-size: 120px 260px, 180px 340px;
-    animation-duration: 2.4s;
-}
-
-@keyframes rainFall {
-    from {
-        background-position: 0 -240px, 0 -320px;
-    }
-
-    to {
-        background-position: -68px 240px, -112px 320px;
-    }
-}
-
 a {
     color: inherit;
     text-decoration: none;
@@ -103,13 +72,18 @@ img {
 footer,
 .trust-strip,
 .image-caption {
+    position: relative;
+    overflow: hidden;
     background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.035) 46%, rgba(255, 255, 255, 0.075)),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.04)),
         var(--glass);
-    border: 1px solid var(--glass-line);
-    -webkit-backdrop-filter: blur(26px) saturate(126%);
-    backdrop-filter: blur(26px) saturate(126%);
-    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    -webkit-backdrop-filter: blur(22px) saturate(140%);
+    backdrop-filter: blur(22px) saturate(140%);
+    box-shadow:
+        0 20px 70px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        inset 0 -1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .site-nav {
@@ -558,13 +532,10 @@ footer::before {
     inset: 0;
     pointer-events: none;
     background:
-        radial-gradient(circle at 8% 14%, rgba(255, 255, 255, 0.28) 0 1px, transparent 2px),
-        radial-gradient(circle at 26% 72%, rgba(255, 255, 255, 0.16) 0 1px, transparent 2px),
-        radial-gradient(circle at 78% 22%, rgba(255, 255, 255, 0.18) 0 1px, transparent 2px),
-        linear-gradient(181deg, transparent 0 45%, rgba(255, 255, 255, 0.14) 46% 47%, transparent 48%),
         radial-gradient(circle at 12% 0%, rgba(255, 255, 255, 0.12), transparent 17rem),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 42%),
         linear-gradient(120deg, rgba(255, 255, 255, 0.1), transparent 34%);
-    opacity: 0.5;
+    opacity: 0.44;
 }
 
 .about-text > *,
@@ -876,6 +847,82 @@ footer a:focus-visible {
     color: var(--white);
 }
 
+.site-nav::before,
+.hero-glass-card::before,
+.contact-band::before,
+.product-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent 44%),
+        radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.13), transparent 18rem);
+    opacity: 0.5;
+}
+
+.site-nav::after,
+.hero-glass-card::after,
+.contact-band::after,
+.product-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 18% 16%, rgba(255, 255, 255, 0.42) 0 0.7px, transparent 1.8px),
+        radial-gradient(circle at 72% 34%, rgba(255, 255, 255, 0.28) 0 0.8px, transparent 2px),
+        radial-gradient(circle at 46% 68%, rgba(255, 255, 255, 0.22) 0 0.7px, transparent 1.8px),
+        repeating-linear-gradient(
+            96deg,
+            transparent 0 38px,
+            rgba(255, 255, 255, 0.13) 39px 40px,
+            transparent 41px 88px
+        ),
+        repeating-linear-gradient(
+            101deg,
+            transparent 0 72px,
+            rgba(255, 255, 255, 0.08) 73px 74px,
+            transparent 75px 148px
+        );
+    background-size:
+        190px 240px,
+        260px 320px,
+        230px 280px,
+        220px 300px,
+        360px 460px;
+    opacity: 0.2;
+    filter: blur(0.18px);
+    mix-blend-mode: screen;
+    animation: rainSlide 12s linear infinite;
+}
+
+.product-card::after {
+    opacity: 0.1;
+    animation-duration: 16s;
+}
+
+@keyframes rainSlide {
+    from {
+        background-position:
+            0 0,
+            0 0,
+            0 0,
+            0 0,
+            0 0;
+    }
+
+    to {
+        background-position:
+            0 170px,
+            0 230px,
+            0 200px,
+            0 320px,
+            0 460px;
+    }
+}
+
 .reveal {
     opacity: 0;
     transform: translateY(34px);
@@ -1129,9 +1176,12 @@ footer a:focus-visible {
         scroll-behavior: auto;
     }
 
-    .rain-layer {
+    .site-nav::after,
+    .hero-glass-card::after,
+    .contact-band::after,
+    .product-card::after {
         animation: none;
-        opacity: 0.12;
+        opacity: 0.06;
     }
 
     .reveal {
