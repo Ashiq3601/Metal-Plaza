@@ -1,4 +1,5 @@
 const revealItems = document.querySelectorAll(".reveal");
+const siteNav = document.querySelector(".site-nav");
 
 function revealOnScroll() {
     revealItems.forEach((item) => {
@@ -11,6 +12,16 @@ function revealOnScroll() {
     });
 }
 
+function updateNavState() {
+    if (!siteNav) {
+        return;
+    }
+
+    siteNav.classList.toggle("scrolled", window.scrollY > 16);
+}
+
 window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("scroll", updateNavState);
 
 revealOnScroll();
+updateNavState();
