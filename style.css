@@ -18,6 +18,7 @@
     --glass: rgba(255, 255, 255, 0.06);
     --glass-strong: rgba(255, 255, 255, 0.09);
     --glass-line: rgba(255, 255, 255, 0.12);
+    --glass-bright-line: rgba(255, 255, 255, 0.28);
     --line-soft: rgba(216, 222, 225, 0.14);
     --shadow: 0 30px 90px rgba(0, 0, 0, 0.52);
     --premium-shadow: 0 34px 100px rgba(0, 0, 0, 0.58);
@@ -30,12 +31,13 @@ html {
 
 body {
     background:
-        radial-gradient(circle at 18% 0%, rgba(224, 107, 60, 0.08), transparent 32rem),
-        radial-gradient(circle at 88% 12%, rgba(216, 222, 225, 0.08), transparent 28rem),
-        linear-gradient(180deg, #0c1013 0%, var(--black) 48rem, #030405 100%);
+        radial-gradient(circle at 15% 0%, rgba(224, 107, 60, 0.1), transparent 34rem),
+        radial-gradient(circle at 82% 12%, rgba(102, 136, 156, 0.16), transparent 30rem),
+        linear-gradient(180deg, #0c1216 0%, var(--black) 48rem, #030405 100%);
     color: var(--white);
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.5;
+    overflow-x: hidden;
 }
 
 body::before {
@@ -51,6 +53,37 @@ body::before {
     background-size: 44px 44px;
     -webkit-mask-image: linear-gradient(to bottom, #000, transparent 78%);
     mask-image: linear-gradient(to bottom, #000, transparent 78%);
+}
+
+.rain-layer {
+    position: fixed;
+    inset: -12% 0 0;
+    z-index: 4;
+    pointer-events: none;
+    opacity: 0.32;
+    background-image:
+        linear-gradient(102deg, transparent 0 47%, rgba(236, 244, 247, 0.42) 48% 49%, transparent 50%),
+        linear-gradient(102deg, transparent 0 48%, rgba(236, 244, 247, 0.24) 49% 50%, transparent 51%);
+    background-size: 68px 160px, 112px 220px;
+    animation: rainFall 1.25s linear infinite;
+    mix-blend-mode: screen;
+}
+
+.rain-layer-soft {
+    opacity: 0.16;
+    filter: blur(0.4px);
+    background-size: 120px 260px, 180px 340px;
+    animation-duration: 2.4s;
+}
+
+@keyframes rainFall {
+    from {
+        background-position: 0 -240px, 0 -320px;
+    }
+
+    to {
+        background-position: -68px 240px, -112px 320px;
+    }
 }
 
 a {
@@ -71,29 +104,28 @@ footer,
 .trust-strip,
 .image-caption {
     background:
-        linear-gradient(145deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035) 46%, rgba(255, 255, 255, 0.07)),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.035) 46%, rgba(255, 255, 255, 0.075)),
         var(--glass);
     border: 1px solid var(--glass-line);
-    -webkit-backdrop-filter: blur(18px);
-    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(26px) saturate(126%);
+    backdrop-filter: blur(26px) saturate(126%);
     box-shadow: var(--shadow);
 }
 
 .site-nav {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    width: 100%;
-    min-height: 86px;
-    margin: 0;
+    position: fixed;
+    top: 16px;
+    left: clamp(14px, 3vw, 28px);
+    right: clamp(14px, 3vw, 28px);
+    z-index: 60;
+    width: auto;
+    min-height: 84px;
     padding: 14px clamp(18px, 5vw, 64px);
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    border-right: 0;
-    border-left: 0;
-    border-radius: 0;
+    border-radius: 18px;
     overflow: hidden;
     transition: background 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
@@ -104,9 +136,24 @@ footer,
     inset: 0;
     pointer-events: none;
     background:
-        linear-gradient(90deg, rgba(255, 255, 255, 0.14), transparent 24%, transparent 76%, rgba(255, 255, 255, 0.1)),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.16), transparent 48%);
-    opacity: 0.42;
+        radial-gradient(circle at 5% 16%, rgba(255, 255, 255, 0.34) 0 1px, transparent 2px),
+        radial-gradient(circle at 20% 48%, rgba(255, 255, 255, 0.22) 0 1px, transparent 2px),
+        radial-gradient(circle at 58% 22%, rgba(255, 255, 255, 0.24) 0 1px, transparent 2px),
+        radial-gradient(circle at 88% 62%, rgba(255, 255, 255, 0.2) 0 1px, transparent 2px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.17), transparent 24%, transparent 76%, rgba(255, 255, 255, 0.1)),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent 48%);
+    opacity: 0.54;
+}
+
+.site-nav::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.28), transparent 1px),
+        linear-gradient(100deg, transparent 4%, rgba(255, 255, 255, 0.16) 18%, transparent 32%);
+    opacity: 0.6;
 }
 
 .site-nav > * {
@@ -117,9 +164,9 @@ footer,
 .site-nav.scrolled {
     background:
         linear-gradient(145deg, rgba(255, 255, 255, 0.105), rgba(255, 255, 255, 0.04)),
-        rgba(8, 10, 12, 0.82);
-    border-color: rgba(255, 255, 255, 0.18);
-    box-shadow: 0 18px 58px rgba(0, 0, 0, 0.56);
+        rgba(8, 12, 15, 0.72);
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 22px 70px rgba(0, 0, 0, 0.62);
 }
 
 .nav-brand {
@@ -133,13 +180,54 @@ footer,
     text-transform: uppercase;
 }
 
-.nav-brand img {
+.nav-logo-frame,
+.logo-plaque,
+.footer-logo-frame {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.24), transparent 58%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.035));
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    backdrop-filter: blur(18px) saturate(120%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        0 16px 42px rgba(0, 0, 0, 0.42);
+}
+
+.nav-logo-frame::before,
+.logo-plaque::before,
+.footer-logo-frame::before {
+    content: "";
+    position: absolute;
+    inset: 8%;
+    z-index: -1;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.38);
+    filter: blur(18px);
+    opacity: 0.22;
+}
+
+.nav-logo-frame {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+}
+
+.nav-logo-frame img {
     width: auto;
-    height: 52px;
-    max-width: 58px;
+    height: 50px;
+    max-width: 54px;
     object-fit: contain;
     display: block;
-    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.45));
+    filter:
+        invert(1)
+        brightness(1.22)
+        contrast(1.05)
+        drop-shadow(0 8px 20px rgba(0, 0, 0, 0.45));
 }
 
 .nav-links {
@@ -172,17 +260,18 @@ footer,
 }
 
 .nav-links a:hover,
-.nav-links a:focus-visible {
+.nav-links a:focus-visible,
+.nav-links a.active {
     color: var(--white);
 }
 
-.nav-links a:first-child {
+.nav-links a.active {
     color: var(--copper-bright);
 }
 
 .nav-links a:hover::after,
 .nav-links a:focus-visible::after,
-.nav-links a:first-child::after {
+.nav-links a.active::after {
     transform: scaleX(1);
     transform-origin: left;
 }
@@ -197,6 +286,8 @@ footer,
     border-radius: 8px;
     font-weight: 800;
     letter-spacing: 0.2px;
+    position: relative;
+    overflow: hidden;
     transition: transform 0.22s ease, border-color 0.22s ease, background 0.22s ease;
 }
 
@@ -210,6 +301,19 @@ footer,
         0 14px 32px rgba(180, 74, 44, 0.24);
 }
 
+.nav-call::before,
+.btn-primary::before {
+    content: "";
+    position: absolute;
+    inset: 1px;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.32), transparent 42%),
+        linear-gradient(100deg, transparent 10%, rgba(255, 255, 255, 0.22), transparent 34%);
+    opacity: 0.72;
+}
+
 .nav-call {
     min-width: 116px;
     padding: 0 18px;
@@ -221,13 +325,20 @@ footer,
     transform: translateY(-2px);
 }
 
+.nav-call:hover,
+.btn-primary:hover {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.34),
+        0 18px 44px rgba(224, 107, 60, 0.36);
+}
+
 .hero {
     min-height: min(860px, 92vh);
-    margin-top: -86px;
-    padding: 172px 24px 78px;
+    margin-top: 0;
+    padding: 144px 24px 78px;
     background-image: url("hero-bg.jpg");
     background-size: cover;
-    background-position: center right;
+    background-position: center calc(50% + var(--hero-shift, 0px));
     position: relative;
     display: flex;
     align-items: center;
@@ -260,9 +371,11 @@ footer,
     position: relative;
     width: min(520px, 100%);
     padding: clamp(28px, 4.2vw, 48px);
-    border-radius: 8px;
+    border-radius: 22px;
     overflow: hidden;
     box-shadow: var(--premium-shadow);
+    -webkit-backdrop-filter: blur(30px) saturate(130%);
+    backdrop-filter: blur(30px) saturate(130%);
 }
 
 .hero-glass-card::before {
@@ -271,10 +384,16 @@ footer,
     inset: 0;
     pointer-events: none;
     background:
+        radial-gradient(circle at 14% 10%, rgba(255, 255, 255, 0.42) 0 1px, transparent 2px),
+        radial-gradient(circle at 22% 34%, rgba(255, 255, 255, 0.3) 0 1px, transparent 2px),
+        radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.28) 0 1px, transparent 2px),
+        radial-gradient(circle at 72% 62%, rgba(255, 255, 255, 0.18) 0 1px, transparent 2px),
+        linear-gradient(182deg, transparent 0 34%, rgba(255, 255, 255, 0.2) 35% 36%, transparent 37%),
+        linear-gradient(178deg, transparent 0 54%, rgba(255, 255, 255, 0.16) 55% 56%, transparent 57%),
         radial-gradient(circle at 18% 8%, rgba(255, 255, 255, 0.18), transparent 13rem),
         linear-gradient(125deg, rgba(255, 255, 255, 0.18), transparent 34%),
         linear-gradient(to bottom right, transparent 55%, rgba(255, 255, 255, 0.08));
-    opacity: 0.58;
+    opacity: 0.64;
 }
 
 .hero-glass-card::after,
@@ -300,21 +419,23 @@ footer::after {
 }
 
 .logo-plaque {
-    width: auto;
+    width: 104px;
     height: clamp(90px, 10vw, 120px);
     margin-bottom: clamp(22px, 3.4vw, 30px);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    border-radius: 20px;
 }
 
 .logo {
-    height: 100%;
+    height: min(100px, 82%);
     width: auto;
     max-width: min(120px, 34vw);
     object-fit: contain;
     display: block;
-    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.45));
+    filter:
+        invert(1)
+        brightness(1.22)
+        contrast(1.05)
+        drop-shadow(0 8px 20px rgba(0, 0, 0, 0.45));
 }
 
 .hero h1 {
@@ -325,6 +446,10 @@ footer::after {
     line-height: 0.96;
     color: var(--white);
     text-shadow: 0 18px 46px rgba(0, 0, 0, 0.62);
+}
+
+.hero h1 span {
+    color: var(--copper-bright);
 }
 
 .hero h1::after {
@@ -433,9 +558,13 @@ footer::before {
     inset: 0;
     pointer-events: none;
     background:
+        radial-gradient(circle at 8% 14%, rgba(255, 255, 255, 0.28) 0 1px, transparent 2px),
+        radial-gradient(circle at 26% 72%, rgba(255, 255, 255, 0.16) 0 1px, transparent 2px),
+        radial-gradient(circle at 78% 22%, rgba(255, 255, 255, 0.18) 0 1px, transparent 2px),
+        linear-gradient(181deg, transparent 0 45%, rgba(255, 255, 255, 0.14) 46% 47%, transparent 48%),
         radial-gradient(circle at 12% 0%, rgba(255, 255, 255, 0.12), transparent 17rem),
         linear-gradient(120deg, rgba(255, 255, 255, 0.1), transparent 34%);
-    opacity: 0.46;
+    opacity: 0.5;
 }
 
 .about-text > *,
@@ -706,12 +835,22 @@ footer > div + div {
     justify-content: flex-start;
 }
 
+.footer-logo-frame {
+    width: 76px;
+    height: 76px;
+    border-radius: 18px;
+}
+
 .footer-logo-box img {
-    height: 100%;
+    height: 68px;
     width: auto;
-    max-width: 76px;
+    max-width: 70px;
     object-fit: contain;
-    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.45));
+    filter:
+        invert(1)
+        brightness(1.22)
+        contrast(1.05)
+        drop-shadow(0 8px 20px rgba(0, 0, 0, 0.45));
 }
 
 footer h3 {
@@ -765,8 +904,8 @@ footer a:focus-visible {
 
     .hero {
         min-height: min(700px, 82vh);
-        margin-top: -130px;
-        padding-top: 210px;
+        margin-top: 0;
+        padding-top: 154px;
     }
 
     .hero-content {
@@ -840,9 +979,15 @@ footer a:focus-visible {
         font-size: 13px;
     }
 
-    .nav-brand img {
-        height: 46px;
-        max-width: 52px;
+    .nav-logo-frame img {
+        height: 44px;
+        max-width: 48px;
+    }
+
+    .nav-logo-frame {
+        width: 50px;
+        height: 50px;
+        border-radius: 13px;
     }
 
     .nav-call {
@@ -859,8 +1004,8 @@ footer a:focus-visible {
 
     .hero {
         min-height: min(650px, 80vh);
-        margin-top: -132px;
-        padding: 194px 18px 48px;
+        margin-top: 0;
+        padding: 146px 18px 48px;
     }
 
     .hero h1 {
@@ -950,13 +1095,14 @@ footer a:focus-visible {
 
 @media (max-width: 480px) {
     .logo-plaque {
+        width: 92px;
         height: 92px;
         margin-bottom: 18px;
     }
 
     .hero {
         min-height: calc(100vh - 136px);
-        padding-top: 182px;
+        padding-top: 138px;
         padding-bottom: 34px;
     }
 
@@ -975,5 +1121,22 @@ footer a:focus-visible {
 
     .trust-strip {
         display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .rain-layer {
+        animation: none;
+        opacity: 0.12;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
 }

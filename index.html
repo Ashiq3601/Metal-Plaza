@@ -6,15 +6,20 @@
     <title>Metal Plaza</title>
     <meta name="description" content="Metal Plaza — quality roofing sheets, steel materials and accessories in Kerala. Call +91 99472 22678.">
     <meta name="theme-color" content="#b44a2c">
-    <link rel="preload" href="style.css?v=5" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="style.css?v=5"></noscript>
+    <link rel="preload" href="style.css?v=6" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css?v=6"></noscript>
 </head>
 
 <body>
 
+<div class="rain-layer" aria-hidden="true"></div>
+<div class="rain-layer rain-layer-soft" aria-hidden="true"></div>
+
 <nav class="site-nav" aria-label="Main navigation">
     <a href="#" class="nav-brand" aria-label="Metal Plaza home">
-        <img src="metal-plaza-logo-transparent.png" alt="Metal Plaza Logo" loading="eager">
+        <span class="nav-logo-frame">
+            <img src="metal-plaza-logo-transparent.png" alt="Metal Plaza Logo" loading="eager">
+        </span>
         <span>Metal Plaza</span>
     </a>
 
@@ -37,7 +42,7 @@
                 <img src="metal-plaza-logo-transparent.png" alt="Metal Plaza Logo" class="logo" loading="eager">
             </div>
 
-            <h1>METAL PLAZA</h1>
+            <h1>METAL <span>PLAZA</span></h1>
 
             <p class="hero-tagline">Roofing Sheets • Steel • Accessories</p>
 
@@ -146,7 +151,9 @@
 <footer>
     <div class="footer-brand">
         <div class="footer-logo-box">
-            <img src="metal-plaza-logo-transparent.png" alt="Metal Plaza Logo" loading="lazy">
+            <span class="footer-logo-frame">
+                <img src="metal-plaza-logo-transparent.png" alt="Metal Plaza Logo" loading="lazy">
+            </span>
         </div>
 
         <h3>METAL PLAZA</h3>
@@ -165,6 +172,6 @@
     </div>
 </footer>
 
-<script src="script.js?v=2" defer></script>
+<script src="script.js?v=3" defer></script>
 </body>
 </html>
