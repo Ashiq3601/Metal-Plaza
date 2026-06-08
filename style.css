@@ -84,6 +84,11 @@ img {
     justify-content: center;
     flex: 0 0 auto;
     border-radius: 50%;
+
+    /* Prevent any potential “square/corner” artifacts */
+    -webkit-mask-image: -webkit-radial-gradient(circle, #000 0%, #000 60%, transparent 62%);
+    mask-image: radial-gradient(circle, #000 0%, #000 60%, transparent 62%);
+
     background:
         radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.58) 34%, rgba(255, 255, 255, 0.08) 68%, transparent 74%),
         linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.04));
@@ -97,28 +102,38 @@ img {
         inset 0 1px 0 rgba(255, 255, 255, 0.4),
         inset 0 -1px 0 rgba(214, 189, 122, 0.2);
     overflow: hidden;
+    will-change: transform;
 }
 
 .brand-emblem::before {
     content: "";
     position: absolute;
-    inset: -20%;
+    inset: -18%;
     z-index: -1;
     border-radius: inherit;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.62), rgba(214, 189, 122, 0.16) 44%, transparent 70%);
-    filter: blur(24px);
+    filter: blur(22px);
     opacity: 0.82;
 }
 
+/* Subtle metal shimmer (always clipped to the circle) */
 .brand-emblem::after {
     content: "";
     position: absolute;
-    inset: -45% auto -45% -95%;
-    width: 55%;
-    background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.88), transparent);
-    transform: skewX(-18deg);
+    inset: -40% -50%;
+    background:
+        conic-gradient(
+            from 140deg,
+            transparent,
+            rgba(214, 189, 122, 0.55),
+            rgba(255, 255, 255, 0.92),
+            rgba(214, 189, 122, 0.35),
+            transparent
+        );
     opacity: 0;
-    animation: logoSweep 18s ease-in-out infinite;
+    transform: rotate(0deg) scale(1);
+    animation: emblemShimmer 8.5s ease-in-out infinite;
+    pointer-events: none;
 }
 
 .brand-emblem img {
@@ -129,7 +144,10 @@ img {
     max-width: 82%;
     object-fit: contain;
     filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.24));
+    -webkit-user-drag: none;
+    user-select: none;
 }
+
 
 .site-nav {
     position: fixed;
@@ -296,9 +314,25 @@ img {
     opacity: 0.86;
 }
 
+.glass-button::after {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: radial-gradient(circle at 30% 30%, rgba(214, 189, 122, 0.35), transparent 52%);
+    opacity: 0;
+    transition: opacity 0.28s ease;
+    pointer-events: none;
+}
+
+.glass-button:hover::after,
+.glass-button:focus-visible::after {
+    opacity: 1;
+}
+
 .glass-button.secondary {
     border-color: rgba(242, 242, 240, 0.24);
 }
+
 
 .hero {
     position: relative;
@@ -362,7 +396,20 @@ img {
     width: clamp(160px, 18vw, 250px);
     height: clamp(160px, 18vw, 250px);
     transform: translate3d(0, var(--emblem-shift, 0px), 0);
+    animation: heroEmblemFloat 7.5s ease-in-out infinite;
+    will-change: transform;
 }
+
+@keyframes heroEmblemFloat {
+    0%,
+    100% {
+        transform: translate3d(0, var(--emblem-shift, 0px), 0) scale(1);
+    }
+    50% {
+        transform: translate3d(0, calc(var(--emblem-shift, 0px) - 8px), 0) scale(1.015);
+    }
+}
+
 
 .hero-copy {
     text-shadow: 0 18px 48px rgba(0, 0, 0, 0.78);
@@ -785,23 +832,29 @@ footer a:focus-visible {
     }
 }
 
-@keyframes logoSweep {
+@keyframes emblemShimmer {
     0%,
+    58% {
+        opacity: 0;
+        transform: rotate(0deg) scale(1.02);
+    }
+    65% {
+        opacity: 0.9;
+    }
     78% {
-        left: -95%;
-        opacity: 0;
+        opacity: 0.35;
     }
-
-    82% {
-        opacity: 0.84;
-    }
-
-    90%,
     100% {
-        left: 140%;
         opacity: 0;
+        transform: rotate(360deg) scale(1.02);
     }
 }
+
+/* Hide legacy sweep keyframes if any remain */
+/* (intentionally left blank) */
+
+
+
 
 @media (max-width: 1080px) {
     .site-nav {
@@ -1000,4 +1053,9 @@ footer a:focus-visible {
         opacity: 1;
         transform: none;
     }
+
+    .hero-emblem {
+        animation: none !important;
+    }
 }
+
