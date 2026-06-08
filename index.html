@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metal Plaza</title>
-    <link rel="stylesheet" href="style.css?v=2">
+    <meta name="description" content="Metal Plaza — quality roofing sheets, steel materials and accessories in Kerala. Call +91 99472 22678.">
+    <meta name="theme-color" content="#b44a2c">
+    <link rel="preload" href="style.css?v=3" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="style.css?v=3"></noscript>
 </head>
 
 <body>
 
 <nav class="site-nav" aria-label="Main navigation">
     <a href="#" class="nav-brand" aria-label="Metal Plaza home">
-        <img src="logo.png" alt="Metal Plaza Logo">
+        <img src="logo.png" alt="Metal Plaza Logo" loading="eager">
         <span>Metal Plaza</span>
     </a>
 
@@ -30,7 +33,7 @@
 
     <div class="hero-content">
         <div class="logo-plaque">
-            <img src="logo.png" alt="Metal Plaza Logo" class="logo">
+            <img src="logo.png" alt="Metal Plaza Logo" class="logo" loading="eager">
         </div>
 
         <h1>METAL PLAZA</h1>
@@ -71,7 +74,7 @@
     </div>
 
     <div class="about-image">
-        <img src="about-steel.jpg" alt="Steel materials">
+        <img src="about-steel.jpg" alt="Steel materials" loading="lazy">
         <div class="image-caption">Durable materials for Kerala construction needs</div>
     </div>
 </section>
@@ -83,7 +86,7 @@
 
     <div class="product-grid">
         <div class="product-card">
-            <img src="product-roofing.jpg" alt="Roofing Sheets">
+            <img src="product-roofing.jpg" alt="Roofing Sheets" loading="lazy">
             <div class="product-card-body">
                 <p>01</p>
                 <h3>Roofing Sheets</h3>
@@ -92,7 +95,7 @@
         </div>
 
         <div class="product-card">
-            <img src="product-steel.jpg" alt="Steel Materials">
+            <img src="product-steel.jpg" alt="Steel Materials" loading="lazy">
             <div class="product-card-body">
                 <p>02</p>
                 <h3>Steel</h3>
@@ -101,7 +104,7 @@
         </div>
 
         <div class="product-card">
-            <img src="product-accessories.jpg" alt="Accessories">
+            <img src="product-accessories.jpg" alt="Accessories" loading="lazy">
             <div class="product-card-body">
                 <p>03</p>
                 <h3>Accessories</h3>
@@ -118,10 +121,10 @@
     </div>
 
     <div class="gallery-grid">
-        <img src="gallery-1.jpg" alt="Metal Plaza material display">
-        <img src="gallery-2.jpg" alt="Roofing and steel products">
-        <img src="gallery-3.jpg" alt="Steel materials stacked for supply">
-        <img src="gallery-4.jpg" alt="Metal accessories and project materials">
+        <img src="gallery-1.jpg" alt="Metal Plaza material display" loading="lazy">
+        <img src="gallery-2.jpg" alt="Roofing and steel products" loading="lazy">
+        <img src="gallery-3.jpg" alt="Steel materials stacked for supply" loading="lazy">
+        <img src="gallery-4.jpg" alt="Metal accessories and project materials" loading="lazy">
     </div>
 </section>
 
@@ -141,7 +144,7 @@
 <footer>
     <div class="footer-brand">
         <div class="footer-logo-box">
-            <img src="logo.png" alt="Metal Plaza Logo">
+            <img src="logo.png" alt="Metal Plaza Logo" loading="lazy">
         </div>
 
         <h3>METAL PLAZA</h3>
@@ -160,6 +163,6 @@
     </div>
 </footer>
 
-<script src="script.js?v=2"></script>
+<script src="script.js?v=2" defer></script>
 </body>
 </html>
