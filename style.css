@@ -87,7 +87,8 @@ img {
 
     -webkit-mask-image: radial-gradient(circle at center, #000 99%, transparent 100%);
     mask-image: radial-gradient(circle at center, #000 99%, transparent 100%);
-    clip-path: circle(50% at 50% 50%);
+    clip-path: circle(54% at 50% 50%);
+
     background:
         radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.94), rgba(255, 255, 255, 0.58) 34%, rgba(255, 255, 255, 0.08) 68%, transparent 74%),
         linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.04));
@@ -169,12 +170,14 @@ img {
     border: 1px solid rgba(242, 242, 240, 0.18);
     border-radius: 999px;
     background: var(--glass);
-    -webkit-backdrop-filter: blur(30px) saturate(170%) contrast(108%);
-    backdrop-filter: blur(30px) saturate(170%) contrast(108%);
+    -webkit-backdrop-filter: blur(26px) saturate(180%);
+    backdrop-filter: blur(26px) saturate(180%);
     box-shadow:
-        0 18px 64px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.26),
-        inset 0 -1px 0 rgba(255, 255, 255, 0.06);
+        0 18px 64px rgba(0, 0, 0, 0.28),
+        0 0 0 1px rgba(255, 255, 255, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18);
+
     transition: transform 0.32s ease, background 0.32s ease, border-color 0.32s ease;
 }
 
@@ -269,27 +272,28 @@ img {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    padding: 0 24px;
+    padding: 0 22px;
     overflow: hidden;
     color: var(--silver);
-    border: 1px solid var(--gold-line);
+    border: 1px solid rgba(214, 189, 122, 0.55);
     border-radius: 999px;
     background:
-        linear-gradient(135deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.035)),
-        rgba(5, 5, 5, 0.24);
-    -webkit-backdrop-filter: blur(24px) saturate(170%) contrast(108%);
-    backdrop-filter: blur(24px) saturate(170%) contrast(108%);
+        linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06)),
+        rgba(5, 5, 5, 0.22);
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+    backdrop-filter: blur(28px) saturate(190%);
     box-shadow:
-        0 16px 42px rgba(0, 0, 0, 0.32),
-        0 0 24px rgba(214, 189, 122, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.28),
-        inset 0 -1px 0 rgba(214, 189, 122, 0.16);
+        0 16px 42px rgba(0, 0, 0, 0.28),
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.26),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.18);
     font-size: 13px;
     font-weight: 900;
     letter-spacing: 0.9px;
     text-transform: uppercase;
     transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, color 0.28s ease;
 }
+
 
 .glass-button::before {
     content: "";
@@ -401,19 +405,22 @@ img {
     width: clamp(160px, 18vw, 250px);
     height: clamp(160px, 18vw, 250px);
     transform: translate3d(0, var(--emblem-shift, 0px), 0);
-    animation: heroEmblemFloat 7.5s ease-in-out infinite;
+    animation: heroEmblemPulse 5.2s ease-in-out infinite;
     will-change: transform;
 }
 
-@keyframes heroEmblemFloat {
+
+@keyframes heroEmblemPulse {
     0%,
     100% {
         transform: translate3d(0, var(--emblem-shift, 0px), 0) scale(1);
     }
     50% {
-        transform: translate3d(0, calc(var(--emblem-shift, 0px) - 8px), 0) scale(1.015);
+        transform: translate3d(0, var(--emblem-shift, 0px), 0) scale(1.02);
     }
 }
+
+
 
 
 .hero-copy {
