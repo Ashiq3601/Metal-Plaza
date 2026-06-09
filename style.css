@@ -6,16 +6,11 @@
 
 :root {
   --white: #ffffff;
-  --soft-white: rgba(255, 255, 255, 0.88);
-  --muted: rgba(255, 255, 255, 0.66);
-  --border: rgba(255, 255, 255, 0.31);
-  --border-soft: rgba(255, 255, 255, 0.16);
+  --soft-white: rgba(255, 255, 255, 0.9);
+  --muted: rgba(255, 255, 255, 0.7);
+  --border: rgba(255, 255, 255, 0.34);
   --gold: #d9c083;
   --dark: #020403;
-  --safe-top: env(safe-area-inset-top);
-  --safe-bottom: env(safe-area-inset-bottom);
-  --safe-left: env(safe-area-inset-left);
-  --safe-right: env(safe-area-inset-right);
 }
 
 html {
@@ -31,8 +26,9 @@ body {
   min-height: 100dvh;
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--white);
-  background: var(--dark);
+  background: transparent;
   overflow-x: hidden;
+  isolation: isolate;
 }
 
 body.menu-open {
@@ -57,7 +53,7 @@ img {
   scroll-margin-top: calc(140px + env(safe-area-inset-top));
 }
 
-/* Fixed full-screen background including iPhone safe areas */
+/* Background */
 
 .page-bg {
   position: fixed;
@@ -65,12 +61,12 @@ img {
   right: calc(env(safe-area-inset-right) * -1);
   bottom: calc(env(safe-area-inset-bottom) * -1);
   left: calc(env(safe-area-inset-left) * -1);
-  z-index: -3;
+  z-index: 0;
   background-image: url("background4.png");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-  transform: none;
+  transform: none !important;
   will-change: auto;
 }
 
@@ -80,16 +76,16 @@ img {
   right: calc(env(safe-area-inset-right) * -1);
   bottom: calc(env(safe-area-inset-bottom) * -1);
   left: calc(env(safe-area-inset-left) * -1);
-  z-index: -2;
+  z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.045), transparent 28%),
-    radial-gradient(circle at 80% 80%, rgba(0, 40, 24, 0.28), transparent 32%),
+    radial-gradient(circle at 20% 15%, rgba(255, 255, 255, 0.025), transparent 32%),
+    radial-gradient(circle at 80% 80%, rgba(0, 40, 24, 0.1), transparent 36%),
     linear-gradient(
       180deg,
-      rgba(0, 0, 0, 0.08),
-      rgba(0, 0, 0, 0.34) 52%,
-      rgba(0, 14, 10, 0.86)
+      rgba(0, 0, 0, 0.01),
+      rgba(0, 0, 0, 0.08) 48%,
+      rgba(0, 10, 8, 0.24)
     );
 }
 
@@ -97,13 +93,13 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px);
   background-size: 80px 80px;
-  opacity: 0.06;
+  opacity: 0.028;
   mask-image: linear-gradient(to bottom, transparent, black 22%, transparent 92%);
 }
 
@@ -118,7 +114,16 @@ body::before {
   box-shadow: 0 0 18px rgba(217, 192, 131, 0.65);
 }
 
-/* iOS-like liquid glass */
+/* Content above background */
+
+.site-header,
+main,
+footer {
+  position: relative;
+  z-index: 5;
+}
+
+/* Liquid glass */
 
 .glass-panel,
 .glass-nav,
@@ -128,17 +133,17 @@ body::before {
   background:
     linear-gradient(
       135deg,
-      rgba(255, 255, 255, 0.105),
-      rgba(255, 255, 255, 0.034) 46%,
-      rgba(255, 255, 255, 0.012)
+      rgba(255, 255, 255, 0.065),
+      rgba(255, 255, 255, 0.022) 46%,
+      rgba(255, 255, 255, 0.006)
     );
-  border: 1px solid var(--border);
+  border: 1px solid rgba(255, 255, 255, 0.36);
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.38),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.07),
-    0 26px 76px rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(16px) saturate(190%) contrast(112%);
-  -webkit-backdrop-filter: blur(16px) saturate(190%) contrast(112%);
+    inset 0 1px 0 rgba(255, 255, 255, 0.46),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05),
+    0 24px 70px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px) saturate(220%) contrast(112%);
+  -webkit-backdrop-filter: blur(10px) saturate(220%) contrast(112%);
 }
 
 .glass-panel::before,
@@ -151,16 +156,16 @@ body::before {
   background:
     radial-gradient(
       circle at var(--x, 25%) var(--y, 20%),
-      rgba(255, 255, 255, 0.26),
-      transparent 32%
+      rgba(255, 255, 255, 0.18),
+      transparent 34%
     ),
     linear-gradient(
       120deg,
       transparent 14%,
-      rgba(255, 255, 255, 0.11),
-      transparent 68%
+      rgba(255, 255, 255, 0.07),
+      transparent 72%
     );
-  opacity: 0.31;
+  opacity: 0.26;
 }
 
 .glass-panel::after,
@@ -265,18 +270,18 @@ body::before {
   display: flex;
   align-items: center;
   gap: 22px;
-  background: rgba(255,255,255,0.055);
-  border: 1px solid rgba(255,255,255,0.24);
+  background: rgba(255,255,255,0.045);
+  border: 1px solid rgba(255,255,255,0.28);
   color: var(--white);
   font-weight: 700;
   transition: transform 0.25s ease, background 0.25s ease;
-  backdrop-filter: blur(18px) saturate(170%);
-  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  backdrop-filter: blur(10px) saturate(190%);
+  -webkit-backdrop-filter: blur(10px) saturate(190%);
 }
 
 .nav-button:hover {
   transform: translateY(-2px);
-  background: rgba(255,255,255,0.11);
+  background: rgba(255,255,255,0.085);
 }
 
 .nav-button span {
@@ -285,7 +290,7 @@ body::before {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: rgba(255,255,255,0.13);
+  background: rgba(255,255,255,0.12);
   font-size: 1.4rem;
 }
 
@@ -370,10 +375,10 @@ main {
 
 .secondary-btn {
   color: var(--white);
-  background: rgba(255,255,255,0.035);
-  border: 1px solid rgba(255,255,255,0.24);
-  backdrop-filter: blur(12px) saturate(160%);
-  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  background: rgba(255,255,255,0.028);
+  border: 1px solid rgba(255,255,255,0.26);
+  backdrop-filter: blur(10px) saturate(170%);
+  -webkit-backdrop-filter: blur(10px) saturate(170%);
 }
 
 .primary-btn:hover,
@@ -423,10 +428,10 @@ main {
   display: grid;
   place-items: center;
   border: 1px solid rgba(255,255,255,0.24);
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.04);
   font-size: 1.2rem;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .stat-item h3 {
@@ -484,15 +489,15 @@ main {
   height: 210px;
   border-radius: 22px;
   border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.03);
-  box-shadow: 0 22px 60px rgba(0,0,0,0.3);
+  background: rgba(255,255,255,0.025);
+  box-shadow: 0 22px 60px rgba(0,0,0,0.24);
 }
 
 .product-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.78) saturate(1.05);
+  filter: brightness(0.82) saturate(1.08);
   transition: transform 0.7s ease;
 }
 
@@ -504,7 +509,7 @@ main {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.72), transparent 62%);
+  background: linear-gradient(to top, rgba(0,0,0,0.66), transparent 62%);
 }
 
 .product-info {
@@ -525,10 +530,10 @@ main {
   border-radius: 50%;
   display: grid;
   place-items: center;
-  background: rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.07);
   border: 1px solid rgba(255,255,255,0.26);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .product-info h3 {
@@ -697,10 +702,10 @@ footer img {
     display: grid;
     place-content: center;
     gap: 5px;
-    background: rgba(255,255,255,0.075);
+    background: rgba(255,255,255,0.055);
     cursor: pointer;
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   .menu-btn span {

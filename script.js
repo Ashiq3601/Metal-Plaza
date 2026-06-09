@@ -24,7 +24,7 @@ if (menuBtn && mobileMenu) {
   });
 }
 
-/* Correct active nav state */
+/* Active nav state */
 
 const sectionLinks = document.querySelectorAll(".nav-links a, .mobile-menu a");
 
@@ -74,7 +74,7 @@ document.querySelectorAll(".glass-panel, .glass-nav, .mobile-menu").forEach((pan
   });
 });
 
-/* Reveal animation using Motion if available */
+/* Reveal animation */
 
 const revealItems = document.querySelectorAll(".reveal");
 
