@@ -24,8 +24,6 @@ if (menuBtn && mobileMenu) {
   });
 }
 
-/* Active nav state */
-
 const sectionLinks = document.querySelectorAll(".nav-links a, .mobile-menu a");
 
 function updateActiveLink() {
@@ -36,7 +34,6 @@ function updateActiveLink() {
 
   sections.forEach((id) => {
     const section = document.getElementById(id);
-
     if (!section) return;
 
     const rect = section.getBoundingClientRect();
@@ -48,15 +45,12 @@ function updateActiveLink() {
 
   sectionLinks.forEach((link) => {
     const href = link.getAttribute("href");
-
     link.classList.toggle("active", href === `#${current}`);
   });
 }
 
 window.addEventListener("scroll", updateActiveLink);
 window.addEventListener("load", updateActiveLink);
-
-/* Liquid glass mouse light movement */
 
 document.querySelectorAll(".glass-panel, .glass-nav, .mobile-menu").forEach((panel) => {
   panel.addEventListener("mousemove", (event) => {
@@ -73,8 +67,6 @@ document.querySelectorAll(".glass-panel, .glass-nav, .mobile-menu").forEach((pan
     panel.style.setProperty("--y", "20%");
   });
 });
-
-/* Reveal animation */
 
 const revealItems = document.querySelectorAll(".reveal");
 
@@ -116,8 +108,6 @@ const revealObserver = new IntersectionObserver(
 revealItems.forEach((item) => {
   revealObserver.observe(item);
 });
-
-/* Counting animation */
 
 const counters = document.querySelectorAll(".count-up");
 
@@ -191,8 +181,6 @@ counters.forEach((counter) => {
   counterObserver.observe(counter);
 });
 
-/* Magnetic button effect */
-
 document.querySelectorAll(".magnetic-btn").forEach((button) => {
   button.addEventListener("mousemove", (event) => {
     const rect = button.getBoundingClientRect();
@@ -206,8 +194,6 @@ document.querySelectorAll(".magnetic-btn").forEach((button) => {
     button.style.transform = "translate(0px, 0px)";
   });
 });
-
-/* Scroll progress only. Background stays fixed. */
 
 window.addEventListener("scroll", () => {
   if (!scrollProgress) return;

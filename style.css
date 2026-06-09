@@ -335,16 +335,17 @@ main {
 
 .hero-brand-card {
   min-height: 520px;
-  padding: clamp(34px, 4vw, 56px);
+  padding: clamp(36px, 4vw, 56px);
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
 }
 
 .hero-logo {
-  width: min(58%, 390px);
-  margin-bottom: clamp(22px, 3vw, 36px);
+  width: min(42%, 320px);
+  margin: 0 auto clamp(24px, 3vw, 34px);
   object-fit: contain;
   filter:
     drop-shadow(0 0 16px rgba(255,255,255,0.38))
@@ -353,12 +354,14 @@ main {
 }
 
 .hero h1 {
-  max-width: 9.5ch;
+  max-width: 760px;
+  margin: 0 auto;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(3.6rem, 6.2vw, 6.9rem);
+  font-size: clamp(3rem, 5.4vw, 6rem);
   font-weight: 400;
-  line-height: 0.96;
+  line-height: 0.98;
   letter-spacing: -0.055em;
+  text-align: center;
   text-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
 
@@ -801,17 +804,22 @@ footer img {
   }
 
   .hero-brand-card {
-    min-height: 430px;
-    padding: 28px 24px;
+    min-height: 420px;
+    padding: 30px 24px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   .hero-logo {
-    width: min(88%, 360px);
-    margin-bottom: 26px;
+    width: min(78%, 300px);
+    margin: 0 auto 24px;
   }
 
   .hero h1 {
-    font-size: clamp(3rem, 15vw, 4.5rem);
+    max-width: 420px;
+    font-size: clamp(2.8rem, 13vw, 4.3rem);
+    text-align: center;
   }
 
   .hero-actions {
@@ -849,12 +857,17 @@ footer img {
 
 @media (max-width: 460px) {
   .hero-brand-card {
-    min-height: 390px;
-    padding: 24px 20px;
+    min-height: 380px;
+    padding: 26px 20px;
   }
 
   .hero-logo {
-    width: 92%;
+    width: min(82%, 270px);
+    margin-bottom: 22px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.6rem, 12vw, 3.8rem);
   }
 
   .hero-info-card {
