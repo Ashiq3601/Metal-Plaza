@@ -51,18 +51,13 @@ revealItems.forEach((item) => {
   observer.observe(item);
 });
 
-/* Background parallax and progress bar */
+/* Scroll progress only. Background stays fixed. */
 window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-  const bg = document.querySelector(".page-bg");
-
-  if (bg) {
-    bg.style.transform = `scale(1.04) translateY(${scrollY * 0.08}px)`;
-  }
-
   if (scrollProgress) {
+    const scrollY = window.scrollY;
     const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
     const progress = pageHeight > 0 ? (scrollY / pageHeight) * 100 : 0;
+
     scrollProgress.style.width = `${progress}%`;
   }
 });
