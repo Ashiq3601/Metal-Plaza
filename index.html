@@ -1,218 +1,407 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metal Plaza</title>
-    <meta name="description" content="Metal Plaza — premium roofing sheets, steel materials and accessories in Kerala. Call +91 99472 22678.">
-    <meta name="theme-color" content="#050505">
-    <link rel="preload" href="style.css?v=14" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="style.css?v=14">
-        <style>.page-loader{display:none!important}body{overflow:auto!important}</style>
-    </noscript>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metal Plaza | Where Nature Meets Steel</title>
+  <meta
+    name="description"
+    content="Premium roofing sheets, steel materials, and accessories in Angamaly, Kerala. Metal Plaza helps homeowners and builders shape stronger, better-looking spaces."
+  />
+  <meta name="theme-color" content="#060708" />
+
+  <link rel="preload" href="background3.png" as="image" fetchpriority="high" />
+  <link rel="preload" href="metal-plaza-logo-transparent.png" as="image" />
+
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-<div class="page-loader" aria-hidden="true">
-    <div class="loader-emblem brand-emblem">
-        <img src="metal-plaza-logo-transparent.png" alt="">
-    </div>
-</div>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
-<nav class="site-nav" aria-label="Main navigation">
-    <a href="#home" class="nav-brand" aria-label="Metal Plaza home">
-        <span class="nav-emblem brand-emblem">
-            <img src="metal-plaza-logo-transparent.png" alt="Metal Plaza Logo" loading="eager">
-        </span>
-        <span>Metal Plaza</span>
-    </a>
+  <div class="boot-screen" aria-hidden="true">
+    <img
+      class="boot-logo"
+      src="metal-plaza-logo-transparent.png"
+      alt=""
+      width="1024"
+      height="1024"
+      decoding="async"
+    />
+  </div>
 
-    <div class="nav-links" id="desktop-navigation">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#products">Products</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-    </div>
+  <div class="page-noise" aria-hidden="true"></div>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
 
-    <a href="tel:+919947222678" class="glass-button nav-call">Call Now</a>
-    <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-    </button>
+  <header class="site-header">
+    <div class="shell">
+      <nav class="glass-nav glass-surface" aria-label="Primary">
+        <a class="brand-lockup" href="#home" aria-label="Metal Plaza home">
+          <img
+            class="brand-mark"
+            src="metal-plaza-logo-transparent.png"
+            alt="Metal Plaza logo"
+            width="1024"
+            height="1024"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <span class="brand-copy">
+            <strong>METAL PLAZA</strong>
+            <small>Where Nature Meets Steel</small>
+          </span>
+        </a>
 
-    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#products">Products</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-        <a href="tel:+919947222678" class="glass-button mobile-call">Call Now</a>
-    </div>
-</nav>
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="site-menu"
+          aria-label="Open menu"
+        >
+          <span></span>
+          <span></span>
+        </button>
 
-<header class="hero" id="home">
-    <div class="hero-backdrop" aria-hidden="true"></div>
-    <div class="hero-picture" aria-hidden="true"></div>
-    <div class="hero-atmosphere"></div>
-
-    <div class="hero-inner">
-        <div class="hero-brand">
-            <div class="hero-emblem brand-emblem signature-logo">
-                <img src="metal-plaza-logo-transparent.png" alt="Metal Plaza Logo" class="logo" loading="eager">
-            </div>
-
-            <div class="hero-copy">
-                <p class="eyebrow">Where Nature Meets Steel</p>
-                <h1>METAL PLAZA</h1>
-                <p class="hero-line">Built Strong. Built to Last.</p>
-                <p class="hero-subtitle">Roofing Sheets • Steel • Accessories</p>
-
-                <div class="hero-actions">
-                    <a href="#products" class="glass-button">Explore Products</a>
-                    <a href="tel:+919947222678" class="glass-button secondary">Talk to Us</a>
-                </div>
-            </div>
+        <div class="site-menu" id="site-menu">
+          <a href="#about">About</a>
+          <a href="#products">Products</a>
+          <a href="#gallery">Inspiration</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
         </div>
 
-        <div class="hero-credentials" aria-label="Service highlights">
-            <span>Quality Materials</span>
-            <span>Project Support</span>
-            <span>Local Supply</span>
-        </div>
+        <a class="nav-cta btn btn-quiet magnetic" data-magnetic href="tel:+919947222678">
+          Call now
+        </a>
+      </nav>
     </div>
-</header>
+  </header>
 
-<main>
-<section class="brand-pillars reveal">
-    <div>
-        <span>01</span>
-        <h2>Premium Quality</h2>
-        <p>Materials selected for dependable strength, finish and long-term performance.</p>
-    </div>
-    <div>
-        <span>02</span>
-        <h2>Wide Range</h2>
-        <p>Roofing sheets, steel materials and accessories for complete project needs.</p>
-    </div>
-    <div>
-        <span>03</span>
-        <h2>Reliable Supply</h2>
-        <p>Local project support for homes, commercial buildings and construction work.</p>
-    </div>
-</section>
-
-<section class="about reveal" id="about">
-    <div class="about-image image-reveal">
-        <img src="about-steel.jpg" alt="Steel materials" loading="lazy">
-    </div>
-
-    <div class="about-text">
-        <p class="section-kicker">About Us</p>
-        <h2>Built Strong. Built to Last.</h2>
-
-        <p>
-            Metal Plaza supplies quality roofing sheets, steel materials and
-            accessories for homes, commercial buildings and construction projects.
-            We focus on strength, reliability and long-lasting value for every project.
+  <main>
+    <section class="hero shell" id="home">
+      <div class="hero-copy" data-reveal>
+        <p class="eyebrow">Premium materials for homes that deserve better</p>
+        <h1>Build a house people remember.</h1>
+        <p class="hero-lead">
+          Metal Plaza supplies roofing sheets, structural steel, and finishing accessories
+          for homes, villas, sheds, and commercial builds across Kerala — presented through
+          a calmer, more premium digital experience inspired by contemporary product sites.
         </p>
 
-        <div class="about-points">
-            <p><strong>Roofing solutions</strong> for homes, sheds and commercial spaces.</p>
-            <p><strong>Steel materials</strong> selected for durability and dependable finish.</p>
-            <p><strong>Accessories</strong> that help complete each installation cleanly.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary magnetic" data-magnetic href="#products">Explore products</a>
+          <a class="btn btn-secondary magnetic" data-magnetic href="#contact">Talk to us</a>
         </div>
-    </div>
-</section>
 
-<section class="products reveal" id="products">
-    <div class="section-heading">
-        <p class="section-kicker">Our Products</p>
-        <h2>Quality Products for Every Need</h2>
-    </div>
-
-    <div class="product-grid">
-        <article class="product-card reveal-item">
-            <img src="product-roofing.jpg" alt="Roofing Sheets" loading="lazy">
-            <div class="product-card-body">
-                <span>01</span>
-                <h3>Roofing Sheets</h3>
-                <p>Strong profiles, clean finishes and dependable coverage.</p>
-            </div>
-        </article>
-
-        <article class="product-card reveal-item">
-            <img src="product-steel.jpg" alt="Steel Materials" loading="lazy">
-            <div class="product-card-body">
-                <span>02</span>
-                <h3>Steel</h3>
-                <p>Reliable steel materials for construction and fabrication.</p>
-            </div>
-        </article>
-
-        <article class="product-card reveal-item">
-            <img src="product-accessories.jpg" alt="Accessories" loading="lazy">
-            <div class="product-card-body">
-                <span>03</span>
-                <h3>Accessories</h3>
-                <p>Finishing parts and essentials for complete roofing work.</p>
-            </div>
-        </article>
-    </div>
-</section>
-
-<section class="gallery reveal" id="gallery">
-    <div class="section-heading">
-        <p class="section-kicker">Work &amp; Materials</p>
-        <h2>A Closer Look at Our Supply</h2>
-    </div>
-
-    <div class="gallery-grid">
-        <img src="gallery-1.jpg" alt="Metal Plaza material display" loading="lazy" class="image-reveal">
-        <img src="gallery-2.jpg" alt="Roofing and steel products" loading="lazy" class="image-reveal">
-        <img src="gallery-3.jpg" alt="Steel materials stacked for supply" loading="lazy" class="image-reveal">
-        <img src="gallery-4.jpg" alt="Metal accessories and project materials" loading="lazy" class="image-reveal">
-    </div>
-</section>
-
-<section class="contact-panel reveal" id="contact">
-    <div>
-        <p class="section-kicker">Visit or Call</p>
-        <h2>Ready to choose the right material for your project?</h2>
-        <p>Speak with Metal Plaza for roofing sheets, steel materials and accessories built around your project needs.</p>
-    </div>
-
-    <div class="contact-actions">
-        <a href="tel:+919947222678" class="glass-button">+91 99472 22678</a>
-        <a href="https://maps.app.goo.gl/dTd4XynMt335VB4CA" class="glass-button secondary" target="_blank" rel="noopener">Get Directions</a>
-    </div>
-</section>
-</main>
-
-<footer>
-    <div class="footer-brand">
-        <span class="footer-emblem brand-emblem">
-            <img src="metal-plaza-logo-transparent.png" alt="Metal Plaza Logo" loading="lazy">
-        </span>
-        <div>
-            <h3>METAL PLAZA</h3>
-            <p>Roofing Sheets • Steel • Accessories</p>
+        <div class="hero-points">
+          <article class="info-chip glass-surface" data-reveal>
+            <span>Roofing</span>
+            <strong>Profiles that look clean and last longer</strong>
+          </article>
+          <article class="info-chip glass-surface" data-reveal>
+            <span>Steel</span>
+            <strong>Reliable supply for structure and fabrication</strong>
+          </article>
+          <article class="info-chip glass-surface" data-reveal>
+            <span>Accessories</span>
+            <strong>Finishing components that complete the shell</strong>
+          </article>
         </div>
+      </div>
+
+      <div class="hero-visual" data-reveal data-depth="0.14">
+        <figure class="visual-frame">
+          <div class="visual-sheen" aria-hidden="true"></div>
+          <img
+            src="background3.png"
+            alt="A contemporary metal-and-steel home in a tropical Kerala setting, lit warmly at dusk."
+            width="1024"
+            height="666"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </figure>
+
+        <div class="floating-card glass-surface" data-reveal>
+          <p class="floating-label">House-first inspiration</p>
+          <h2>Show the dream, then sell the materials.</h2>
+          <p>
+            The house image works because your customers are not buying sheet metal in
+            isolation. They are imagining their future roofline, facade, car porch, shed,
+            and whole environment.
+          </p>
+        </div>
+
+        <div class="metric-strip">
+          <div class="metric glass-surface" data-reveal>
+            <span>01</span>
+            <strong>Better framing for the logo</strong>
+          </div>
+          <div class="metric glass-surface" data-reveal>
+            <span>02</span>
+            <strong>Less clutter in the first screen</strong>
+          </div>
+          <div class="metric glass-surface" data-reveal>
+            <span>03</span>
+            <strong>Mobile-safe hero image presentation</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story shell section-grid" id="about">
+      <div class="section-copy" data-reveal>
+        <p class="section-kicker">About Metal Plaza</p>
+        <h2>Materials chosen for strength, weather resistance, and a cleaner finish.</h2>
+        <p>
+          Metal Plaza supports homes, sheds, commercial spaces, and custom builds with
+          roofing sheets, steel materials, and finishing accessories. The right website
+          direction is not to make steel feel industrial and cold. It is to make steel feel
+          precise, dependable, architectural, and premium.
+        </p>
+        <p>
+          That is why this redesign uses a darker canvas, visible hierarchy, sharper spacing,
+          and restrained glass UI only where it helps navigation and call-to-action focus.
+        </p>
+
+        <div class="value-list">
+          <article data-reveal>
+            <span>01</span>
+            <h3>Local support</h3>
+            <p>Advice around projects in and around Angamaly, Mekkad, and nearby areas.</p>
+          </article>
+          <article data-reveal>
+            <span>02</span>
+            <h3>Premium presentation</h3>
+            <p>A product-led brand should look precise online before the first phone call.</p>
+          </article>
+          <article data-reveal>
+            <span>03</span>
+            <h3>Clearer trust signals</h3>
+            <p>Less noise, stronger copy, better imagery, and more obvious contact paths.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="story-media" data-reveal data-depth="0.1">
+        <figure class="media-frame">
+          <img
+            src="about-steel.jpg"
+            alt="Steel materials and roofing supplies."
+            width="1600"
+            height="1200"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+        <div class="story-note glass-surface" data-reveal>
+          <p>Use the transparent logo as a signature mark, not as a clipped badge.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="products shell" id="products">
+      <div class="section-heading" data-reveal>
+        <p class="section-kicker">Product range</p>
+        <h2>Three clear product pillars.</h2>
+        <p>
+          The homepage should stay focused. Instead of many equal-weight blocks, lead with
+          the three categories most visitors immediately understand.
+        </p>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card" data-reveal>
+          <img
+            src="product-roofing.jpg"
+            alt="Roofing sheets"
+            width="1200"
+            height="900"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="product-body">
+            <span>01</span>
+            <h3>Roofing sheets</h3>
+            <p>Clean profiles, dependable finish, and coverage that feels built for real weather.</p>
+          </div>
+        </article>
+
+        <article class="product-card" data-reveal>
+          <img
+            src="product-steel.jpg"
+            alt="Steel materials"
+            width="1200"
+            height="900"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="product-body">
+            <span>02</span>
+            <h3>Steel materials</h3>
+            <p>Structural and fabrication-ready materials backed by a more confident visual story.</p>
+          </div>
+        </article>
+
+        <article class="product-card" data-reveal>
+          <img
+            src="product-accessories.jpg"
+            alt="Accessories"
+            width="1200"
+            height="900"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="product-body">
+            <span>03</span>
+            <h3>Accessories</h3>
+            <p>Fixings, trims, and finishing essentials that make installations look complete.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="gallery shell" id="gallery">
+      <div class="section-heading" data-reveal>
+        <p class="section-kicker">Inspiration and supply</p>
+        <h2>Images should behave like a portfolio, not wallpaper.</h2>
+        <p>
+          Each visual should either prove capability, show material quality, or help a buyer
+          imagine the finished environment.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="gallery-card large" data-reveal>
+          <img
+            src="gallery-1.jpg"
+            alt="Metal Plaza material display"
+            width="1280"
+            height="960"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <figure class="gallery-card" data-reveal>
+          <img
+            src="gallery-2.jpg"
+            alt="Roofing and steel products"
+            width="1280"
+            height="960"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <figure class="gallery-card" data-reveal>
+          <img
+            src="gallery-3.jpg"
+            alt="Steel materials stacked for supply"
+            width="1280"
+            height="960"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <figure class="gallery-card wide" data-reveal>
+          <img
+            src="gallery-4.jpg"
+            alt="Metal accessories and project materials"
+            width="1280"
+            height="960"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section class="process shell" id="process">
+      <div class="section-heading" data-reveal>
+        <p class="section-kicker">Project journey</p>
+        <h2>Less noise. Better sequence.</h2>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-step" data-reveal>
+          <span>Step 01</span>
+          <h3>Bring the plan</h3>
+          <p>Start with the house idea, dimensions, roof concept, or material requirement.</p>
+        </article>
+        <article class="timeline-step" data-reveal>
+          <span>Step 02</span>
+          <h3>Select the build language</h3>
+          <p>Roofing, steel, and accessories are grouped clearly so decisions feel simpler.</p>
+        </article>
+        <article class="timeline-step" data-reveal>
+          <span>Step 03</span>
+          <h3>Finalize the supply</h3>
+          <p>Use the direct call path for faster enquiry handling and local project discussion.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact shell" id="contact">
+      <div class="contact-band">
+        <div class="contact-copy" data-reveal>
+          <p class="section-kicker">Ready to build</p>
+          <h2>Let the first impression feel as strong as the materials.</h2>
+          <p>
+            Speak with Metal Plaza for roofing sheets, steel materials, and accessories shaped
+            around your project needs.
+          </p>
+        </div>
+
+        <div class="contact-actions" data-reveal>
+          <a class="btn btn-primary magnetic" data-magnetic href="tel:+919947222678">
+            +91 99472 22678
+          </a>
+          <a
+            class="btn btn-secondary magnetic"
+            data-magnetic
+            href="https://maps.app.goo.gl/dTd4XynMt335VB4CA"
+            target="_blank"
+            rel="noopener"
+          >
+            Get directions
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer shell">
+    <div class="footer-brand" data-reveal>
+      <img
+        class="footer-mark"
+        src="metal-plaza-logo-transparent.png"
+        alt="Metal Plaza logo"
+        width="1024"
+        height="1024"
+        loading="lazy"
+        decoding="async"
+      />
+      <div>
+        <h3>Metal Plaza</h3>
+        <p>Roofing Sheets • Steel • Accessories</p>
+      </div>
     </div>
 
-    <div>
-        <h4>Location</h4>
-        <p>Karakkattukunnu, Mekkad, Angamaly, Kerala 683589</p>
+    <div class="footer-meta" data-reveal>
+      <p class="meta-title">Location</p>
+      <p>Karakkattukunnu, Mekkad, Angamaly, Kerala 683589</p>
     </div>
 
-    <div>
-        <h4>Contact</h4>
-        <p><a href="tel:+919947222678">+91 99472 22678</a></p>
-        <p><a href="tel:+919656110694">+91 96561 10694</a></p>
+    <div class="footer-meta" data-reveal>
+      <p class="meta-title">Contact</p>
+      <p><a href="tel:+919947222678">+91 99472 22678</a></p>
+      <p><a href="tel:+919656110694">+91 96561 10694</a></p>
     </div>
-</footer>
+  </footer>
 
-<script src="script.js?v=5" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
