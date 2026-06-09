@@ -17,11 +17,12 @@
 <body>
   <div class="page-bg"></div>
   <div class="page-overlay"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
 
   <header class="site-header">
     <nav class="glass-nav">
       <a href="#" class="brand">
-        <img src="logo-white-transparent.png" alt="Metal Plaza Logo" class="brand-logo">
+        <img src="logo-clean-v2.png" alt="Metal Plaza Logo" class="brand-logo" />
         <span>METAL PLAZA</span>
       </a>
 
@@ -38,7 +39,7 @@
         <span>→</span>
       </a>
 
-      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
         <span></span>
         <span></span>
       </button>
@@ -55,7 +56,7 @@
 
   <main>
     <section class="hero">
-      <div class="hero-card glass-panel">
+      <div class="hero-card glass-panel reveal">
         <p class="eyebrow">Premium materials. Lasting strength.</p>
 
         <h1>Quality Materials for Every Build</h1>
@@ -77,12 +78,12 @@
         </div>
       </div>
 
-      <div class="hero-logo-card glass-panel">
-        <img src="logo-white-transparent.png" alt="Metal Plaza Logo" class="brand-logo">
+      <div class="hero-logo-card glass-panel reveal">
+        <img src="logo-clean-v2.png" alt="Metal Plaza Emblem" class="hero-logo" />
       </div>
     </section>
 
-    <section class="stats glass-panel">
+    <section class="stats glass-panel reveal">
       <div class="stat-item">
         <div class="stat-icon">♜</div>
         <div>
@@ -122,7 +123,7 @@
       </div>
     </section>
 
-    <section class="intro" id="about">
+    <section class="intro reveal" id="about">
       <h2>Built on Strength. Inspired by Nature.</h2>
       <p>
         High-performance building materials that combine durability,
@@ -131,7 +132,7 @@
     </section>
 
     <section class="products" id="products">
-      <article class="product-card">
+      <article class="product-card reveal">
         <img src="product-roofing.jpg" alt="Roofing Sheets" />
         <div class="product-info">
           <div class="product-icon">▰</div>
@@ -140,16 +141,16 @@
         </div>
       </article>
 
-      <article class="product-card">
-        <img src="product-steel.jpg" alt="Steel Structures" />
+      <article class="product-card reveal">
+        <img src="product-steel.jpg" alt="Steel Products" />
         <div class="product-info">
           <div class="product-icon">▱</div>
-          <h3>Steel Structures</h3>
+          <h3>Steel Products</h3>
           <span>→</span>
         </div>
       </article>
 
-      <article class="product-card">
+      <article class="product-card reveal">
         <img src="gallery-1.jpg" alt="Purlins" />
         <div class="product-info">
           <div class="product-icon">▭</div>
@@ -158,7 +159,7 @@
         </div>
       </article>
 
-      <article class="product-card">
+      <article class="product-card reveal">
         <img src="product-accessories.jpg" alt="Accessories" />
         <div class="product-info">
           <div class="product-icon">⌂</div>
@@ -168,7 +169,7 @@
       </article>
     </section>
 
-    <section class="projects glass-panel" id="projects">
+    <section class="projects glass-panel reveal" id="projects">
       <div>
         <p class="eyebrow">For homes, contractors and builders</p>
         <h2>Materials that make every project look stronger.</h2>
@@ -181,7 +182,7 @@
       </p>
     </section>
 
-    <section class="contact glass-panel" id="contact">
+    <section class="contact glass-panel reveal" id="contact">
       <div>
         <p class="eyebrow">Need material guidance?</p>
         <h2>Contact Metal Plaza today.</h2>
@@ -199,7 +200,7 @@
   </main>
 
   <footer>
-    <img src="logo-white-transparent.png" alt="Metal Plaza Logo" class="brand-logo">
+    <img src="logo-clean-v2.png" alt="Metal Plaza Logo" />
     <p>© 2026 Metal Plaza. Built strong. Built to last.</p>
   </footer>
 

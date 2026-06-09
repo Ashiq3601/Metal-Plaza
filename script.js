@@ -1,17 +1,25 @@
 const menuBtn = document.getElementById("menuBtn");
 const mobileMenu = document.getElementById("mobileMenu");
+const scrollProgress = document.getElementById("scrollProgress");
 
-menuBtn.addEventListener("click", () => {
-  mobileMenu.classList.toggle("open");
-});
+if (menuBtn && mobileMenu) {
+  menuBtn.addEventListener("click", () => {
+    const isOpen = mobileMenu.classList.toggle("open");
 
-document.querySelectorAll(".mobile-menu a").forEach((link) => {
-  link.addEventListener("click", () => {
-    mobileMenu.classList.remove("open");
+    document.body.classList.toggle("menu-open", isOpen);
+    menuBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
   });
-});
 
-// Liquid glass light movement
+  document.querySelectorAll(".mobile-menu a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.remove("open");
+      document.body.classList.remove("menu-open");
+      menuBtn.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+/* Liquid glass mouse light movement */
 document.querySelectorAll(".glass-panel, .glass-nav, .mobile-menu").forEach((panel) => {
   panel.addEventListener("mousemove", (event) => {
     const rect = panel.getBoundingClientRect();
@@ -23,14 +31,8 @@ document.querySelectorAll(".glass-panel, .glass-nav, .mobile-menu").forEach((pan
   });
 });
 
-// Reveal animation
-const revealItems = document.querySelectorAll(
-  ".hero-card, .hero-logo-card, .stats, .intro, .product-card, .projects, .contact"
-);
-
-revealItems.forEach((item) => {
-  item.classList.add("reveal");
-});
+/* Reveal animation */
+const revealItems = document.querySelectorAll(".reveal");
 
 const observer = new IntersectionObserver(
   (entries) => {
@@ -49,10 +51,18 @@ revealItems.forEach((item) => {
   observer.observe(item);
 });
 
-// Small parallax effect
+/* Background parallax and progress bar */
 window.addEventListener("scroll", () => {
   const scrollY = window.scrollY;
   const bg = document.querySelector(".page-bg");
 
-  bg.style.transform = `scale(1.04) translateY(${scrollY * 0.08}px)`;
+  if (bg) {
+    bg.style.transform = `scale(1.04) translateY(${scrollY * 0.08}px)`;
+  }
+
+  if (scrollProgress) {
+    const pageHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = pageHeight > 0 ? (scrollY / pageHeight) * 100 : 0;
+    scrollProgress.style.width = `${progress}%`;
+  }
 });
