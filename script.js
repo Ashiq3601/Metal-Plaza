@@ -1,9 +1,11 @@
 const body = document.body;
 const siteNav = document.querySelector(".site-nav");
 const hero = document.querySelector(".hero");
-const navLinks = document.querySelectorAll(".nav-links a[href^='#']");
+const menuToggle = document.querySelector(".menu-toggle");
+const mobileMenu = document.querySelector("#mobile-menu");
+const navLinks = document.querySelectorAll(".nav-links a[href^='#'], .mobile-menu a[href^='#']");
 const revealItems = document.querySelectorAll(".reveal, .reveal-item, .image-reveal");
-const sections = [...navLinks]
+const sections = [...document.querySelectorAll(".nav-links a[href^='#']")]
     .map((link) => document.querySelector(link.getAttribute("href")))
     .filter(Boolean);
 
@@ -13,6 +15,17 @@ function finishLoading() {
     window.setTimeout(() => {
         body.classList.add("is-loaded");
     }, 1350);
+}
+
+function setMenuState(isOpen) {
+    if (!menuToggle || !mobileMenu) {
+        return;
+    }
+
+    body.classList.toggle("menu-open", isOpen);
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
+    menuToggle.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    mobileMenu.setAttribute("aria-hidden", String(!isOpen));
 }
 
 function updateNavState() {
@@ -28,10 +41,8 @@ function updateHeroDepth() {
         return;
     }
 
-    const shift = Math.min(window.scrollY * 0.08, 44);
-    const emblemShift = Math.min(window.scrollY * -0.025, 0);
+    const shift = Math.min(window.scrollY * 0.06, 34);
     hero.style.setProperty("--hero-shift", `${shift}px`);
-    hero.style.setProperty("--emblem-shift", `${emblemShift}px`);
 }
 
 function updateActiveNav() {
@@ -97,6 +108,24 @@ function setupReveals() {
 
     revealItems.forEach((item) => observer.observe(item));
 }
+
+if (menuToggle) {
+    menuToggle.addEventListener("click", () => {
+        setMenuState(!body.classList.contains("menu-open"));
+    });
+}
+
+navLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+        setMenuState(false);
+    });
+});
+
+window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        setMenuState(false);
+    }
+});
 
 finishLoading();
 setupReveals();
