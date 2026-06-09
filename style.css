@@ -312,48 +312,39 @@ footer {
 
 main {
   width: min(92%, 1320px);
-  margin: 88px auto 0;
+  margin: 64px auto 0;
   padding-bottom: calc(40px + env(safe-area-inset-bottom));
 }
 
-/* Combined Hero */
+/* Hero */
 
 .hero {
-  min-height: 500px;
-}
-
-.hero-combined {
-  min-height: 480px;
-  border-radius: 36px;
-  padding: clamp(28px, 5vw, 58px);
+  min-height: calc(100svh - 230px);
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  align-items: center;
-  gap: clamp(28px, 5vw, 70px);
+  grid-template-columns: minmax(0, 0.68fr) minmax(340px, 0.32fr);
+  gap: 24px;
+  align-items: end;
 }
 
-.hero-logo-area {
+.hero-brand-card,
+.hero-info-card {
+  border-radius: 36px;
   position: relative;
   z-index: 2;
-  display: grid;
-  place-items: center;
-  min-height: 340px;
-  border-radius: 32px;
-  background:
-    radial-gradient(circle at center, rgba(255,255,255,0.08), transparent 48%),
-    linear-gradient(
-      135deg,
-      rgba(255,255,255,0.07),
-      rgba(255,255,255,0.015)
-    );
-  border: 1px solid rgba(255,255,255,0.18);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,0.2),
-    0 20px 50px rgba(0,0,0,0.14);
+}
+
+.hero-brand-card {
+  min-height: 520px;
+  padding: clamp(34px, 4vw, 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .hero-logo {
-  width: min(88%, 520px);
+  width: min(58%, 390px);
+  margin-bottom: clamp(22px, 3vw, 36px);
   object-fit: contain;
   filter:
     drop-shadow(0 0 16px rgba(255,255,255,0.38))
@@ -361,9 +352,19 @@ main {
   animation: floatLogo 6s ease-in-out infinite;
 }
 
-.hero-content-area {
-  position: relative;
-  z-index: 2;
+.hero h1 {
+  max-width: 9.5ch;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(3.6rem, 6.2vw, 6.9rem);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: -0.055em;
+  text-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.hero-info-card {
+  padding: clamp(28px, 3vw, 42px);
+  align-self: end;
 }
 
 .eyebrow {
@@ -372,32 +373,20 @@ main {
   font-weight: 800;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  margin-bottom: 22px;
-}
-
-.hero h1 {
-  max-width: 9.5ch;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(3.2rem, 7vw, 6.8rem);
-  font-weight: 400;
-  line-height: 0.96;
-  letter-spacing: -0.055em;
-  text-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
 }
 
 .hero-text {
-  max-width: 500px;
-  margin-top: 24px;
+  max-width: 440px;
   color: var(--soft-white);
   font-size: 1.06rem;
   line-height: 1.75;
 }
 
 .hero-actions {
-  margin-top: 30px;
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
+  margin-top: 28px;
+  display: grid;
+  gap: 12px;
 }
 
 .primary-btn,
@@ -671,16 +660,17 @@ footer img {
     grid-template-columns: auto 1fr auto;
   }
 
-  .hero-combined {
+  .hero {
     grid-template-columns: 1fr;
+    min-height: auto;
   }
 
-  .hero-logo-area {
-    order: 1;
+  .hero-brand-card {
+    min-height: 480px;
   }
 
-  .hero-content-area {
-    order: 2;
+  .hero-info-card {
+    align-self: stretch;
   }
 
   .products {
@@ -802,18 +792,22 @@ footer img {
   }
 
   .hero {
-    min-height: auto;
+    gap: 18px;
   }
 
-  .hero-combined {
+  .hero-brand-card,
+  .hero-info-card {
     border-radius: 26px;
-    padding: 24px;
-    gap: 28px;
   }
 
-  .hero-logo-area {
-    min-height: 280px;
-    border-radius: 24px;
+  .hero-brand-card {
+    min-height: 430px;
+    padding: 28px 24px;
+  }
+
+  .hero-logo {
+    width: min(88%, 360px);
+    margin-bottom: 26px;
   }
 
   .hero h1 {
@@ -827,10 +821,6 @@ footer img {
   .primary-btn,
   .secondary-btn {
     width: 100%;
-  }
-
-  .hero-logo {
-    width: min(92%, 520px);
   }
 
   .stats {
@@ -858,16 +848,17 @@ footer img {
 }
 
 @media (max-width: 460px) {
-  .hero-combined {
-    padding: 20px;
-  }
-
-  .hero-logo-area {
-    min-height: 250px;
+  .hero-brand-card {
+    min-height: 390px;
+    padding: 24px 20px;
   }
 
   .hero-logo {
     width: 92%;
+  }
+
+  .hero-info-card {
+    padding: 24px 20px;
   }
 
   .intro {
